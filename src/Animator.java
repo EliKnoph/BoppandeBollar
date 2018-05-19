@@ -67,8 +67,8 @@ public final class Animator extends JPanel implements ActionListener {
         // draw balls
         g2.setColor(Color.orange);
         for (Model.Ball b : model.balls) {
-            double x = b.x - b.radius;
-            double y = b.y + b.radius;
+            double x = b.pos.x - b.radius;
+            double y = b.pos.y + b.radius;
             // paint balls (y-coordinates are inverted)
             Ellipse2D.Double e = new Ellipse2D.Double(x * pixelsPerMeter, this.getHeight() - (y * pixelsPerMeter),
                     b.radius * 2 * pixelsPerMeter, b.radius * 2 * pixelsPerMeter);
@@ -87,7 +87,7 @@ public final class Animator extends JPanel implements ActionListener {
         // creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                Animator anim = new Animator(800, 600, 60);
+                Animator anim = new Animator(800, 600, 100);
                 JFrame frame = new JFrame("Bouncing balls");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.add(anim);
